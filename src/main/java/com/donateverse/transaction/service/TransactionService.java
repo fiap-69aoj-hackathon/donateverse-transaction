@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionService {
@@ -16,12 +17,15 @@ public class TransactionService {
 
     public TransactionEntity save(final TransactionEntity transactionEntity) {
         transactionEntity.setCreationDate(new Date());
-        transactionEntity.setStatus(1);
         return transactionRepository.save(transactionEntity);
     }
 
     public List<TransactionEntity> list() {
         return transactionRepository.findAll();
+    }
+
+    public Optional<TransactionEntity> findById(final Long id) {
+        return transactionRepository.findById(id);
     }
 
     public List<TransactionEntity> findByUserId(final Long id) {

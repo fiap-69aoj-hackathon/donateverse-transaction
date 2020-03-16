@@ -12,6 +12,7 @@ public class TransactionConverter {
         return TransactionEntity.builder()
             .idUser(request.getIdUser())
             .idProduto(request.getIdProduto())
+            .status(request.getStatus())
             .build();
     }
 
