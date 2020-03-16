@@ -20,7 +20,4 @@ public class TransactionRequest implements Serializable {
     @NotNull
     private Long idProduto;
 
-    @NotNull
-    private Integer status;
-
 }

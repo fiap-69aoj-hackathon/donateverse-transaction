@@ -16,6 +16,7 @@ public class TransactionService {
 
     public TransactionEntity save(final TransactionEntity transactionEntity) {
         transactionEntity.setCreationDate(new Date());
+        transactionEntity.setStatus(1);
         return transactionRepository.save(transactionEntity);
     }
 
