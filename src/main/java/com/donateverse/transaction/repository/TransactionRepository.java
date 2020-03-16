@@ -4,9 +4,11 @@ import com.donateverse.transaction.entity.TransactionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {
 
-    TransactionEntity findByIdUser(final Long id);
+    List<TransactionEntity> findByIdUser(final Long id);
 
 }

@@ -49,9 +49,11 @@ public class TransactionController {
     }
 
     @GetMapping("/user/{id}")
-    public TransactionResponse findByUserId(@PathVariable final Long id) {
-        TransactionEntity transaction = transactionService.findByUserId(id);
-        return transactionConverter.toTransactionResponse(transaction);
+    public List<TransactionResponse> findByUserId(@PathVariable final Long id) {
+        List<TransactionEntity> listTransactions = transactionService.findByUserId(id);
+        return listTransactions.stream()
+                .map(transaction -> transactionConverter.toTransactionResponse(transaction))
+                .collect(Collectors.toList());
     }
 
 }

@@ -24,7 +24,7 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public TransactionEntity findByUserId(final Long id) {
+    public List<TransactionEntity> findByUserId(final Long id) {
         return transactionRepository.findByIdUser(id);
     }
 
