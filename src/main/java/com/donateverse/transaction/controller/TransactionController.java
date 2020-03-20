@@ -5,6 +5,8 @@ import com.donateverse.transaction.dto.TransactionRequest;
 import com.donateverse.transaction.dto.TransactionResponse;
 import com.donateverse.transaction.entity.TransactionEntity;
 import com.donateverse.transaction.service.TransactionService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/transactions")
+@Api(value = "Produtos", tags = {"API de transações"})
 public class TransactionController {
 
     @Autowired
@@ -32,6 +35,7 @@ public class TransactionController {
     @Autowired
     private TransactionConverter transactionConverter;
 
+    @ApiOperation(value = "Insere uma nova transação")
     @PostMapping
     public ResponseEntity<TransactionResponse> save(@Valid @RequestBody final TransactionRequest request) {
         TransactionEntity transactionEntity = transactionConverter.toTransactionEntity(request);
@@ -43,6 +47,7 @@ public class TransactionController {
         return ResponseEntity.status(HttpStatus.CREATED).body(transactionResponse);
     }
 
+    @ApiOperation(value = "Retorna uma lista com todas transações")
     @GetMapping
     public List<TransactionResponse> list() {
         List<TransactionEntity> listTransactions = transactionService.list();
@@ -51,6 +56,7 @@ public class TransactionController {
             .collect(Collectors.toList());
     }
 
+    @ApiOperation(value = "Retorna as transações de um usuário")
     @GetMapping("/user/{id}")
     public List<TransactionResponse> findByUserId(@PathVariable final Long id) {
         List<TransactionEntity> listTransactions = transactionService.findByUserId(id);
@@ -59,6 +65,7 @@ public class TransactionController {
             .collect(Collectors.toList());
     }
 
+    @ApiOperation(value = "Atualiza o status de uma transação")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id,
         @RequestBody TransactionRequest transactionRequest) {
