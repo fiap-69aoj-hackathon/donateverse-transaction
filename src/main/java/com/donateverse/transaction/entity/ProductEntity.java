@@ -6,17 +6,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
-import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -24,8 +19,8 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "transaction")
-public class TransactionEntity {
+@Table(name = "product")
+public class ProductEntity {
 
     @EqualsAndHashCode.Include
     @Id
@@ -33,16 +28,9 @@ public class TransactionEntity {
     private Long id;
 
     @NotNull
-    private Long idUser;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_transaction", nullable = false)
-    private List<ProductEntity> products;
+    private String description;
 
     @NotNull
-    private Integer status;
-
-    @NotNull
-    private Date creationDate;
+    private Integer amount;
 
 }

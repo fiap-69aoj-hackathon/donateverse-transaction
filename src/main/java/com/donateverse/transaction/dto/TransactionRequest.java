@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 @Builder
 @Getter
@@ -18,7 +19,7 @@ public class TransactionRequest implements Serializable {
     private Long idUser;
 
     @NotNull
-    private Long idProduto;
+    private List<ProductRequest> products;
 
     private Integer status;
 

@@ -5,23 +5,16 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
-
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionResponse {
+public class ProductResponse {
 
     private Long id;
 
-    private Long idUser;
+    private String description;
 
-    private List<ProductResponse> products;
-
-    private Integer status;
-
-    private Date creationDate;
+    private Integer amount;
 
 }
