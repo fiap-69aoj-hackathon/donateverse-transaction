@@ -18,7 +18,6 @@ public class TransactionRequest implements Serializable {
     @NotNull
     private Long idUser;
 
-    @NotNull
     private List<ProductRequest> products;
 
     private Integer status;

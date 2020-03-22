@@ -73,7 +73,7 @@ public class TransactionController {
 
         if (transactionEntityOptional.isPresent()) {
             TransactionEntity transactionEntity = transactionEntityOptional.get();
-            BeanUtils.copyProperties(transactionRequest, transactionEntity, "id");
+            transactionEntity.setStatus(transactionRequest.getStatus());
             transactionEntity = transactionService.save(transactionEntity);
 
             return ResponseEntity.ok(transactionEntity);
