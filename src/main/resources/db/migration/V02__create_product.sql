@@ -4,6 +4,5 @@ CREATE TABLE `product` (
     `description` VARCHAR(150) NOT NULL,
     `amount` INTEGER NOT NULL,
     PRIMARY KEY (`id`),
-    KEY `id_transaction` (`id_transaction`),
     CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`id_transaction`) REFERENCES `transaction` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

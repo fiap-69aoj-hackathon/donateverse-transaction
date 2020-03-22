@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: donateverse-transaction
+  profiles:
+    active:
+      dev
+
+server:
+  port: 8081
