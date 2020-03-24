@@ -82,4 +82,16 @@ public class TransactionController {
         return ResponseEntity.badRequest().build();
     }
 
+    @ApiOperation(value = "Retorna uma transação por ID")
+    @GetMapping("/{id}")
+    public ResponseEntity<TransactionResponse> findById(@PathVariable final Long id) {
+        Optional<TransactionEntity> transaction = transactionService.findById(id);
+
+        if(transaction.isPresent()) {
+            return ResponseEntity.ok(transactionConverter.toTransactionResponse(transaction.get()));
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
 }
