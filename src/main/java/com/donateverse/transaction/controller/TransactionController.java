@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/transactions")
-@Api(value = "Produtos", tags = {"API de transações"})
+@Api(value = "Transações", tags = {"API de transações"})
 public class TransactionController {
 
     @Autowired
@@ -47,7 +47,7 @@ public class TransactionController {
         return ResponseEntity.status(HttpStatus.CREATED).body(transactionResponse);
     }
 
-    @ApiOperation(value = "Retorna uma lista com todas transações")
+    @ApiOperation(value = "Busca uma lista com todas transações")
     @GetMapping
     public List<TransactionResponse> list() {
         List<TransactionEntity> listTransactions = transactionService.list();
@@ -56,7 +56,7 @@ public class TransactionController {
             .collect(Collectors.toList());
     }
 
-    @ApiOperation(value = "Retorna as transações de um usuário")
+    @ApiOperation(value = "Busca as transações de um usuário")
     @GetMapping("/user/{id}")
     public List<TransactionResponse> findByUserId(@PathVariable final Long id) {
         List<TransactionEntity> listTransactions = transactionService.findByUserId(id);
