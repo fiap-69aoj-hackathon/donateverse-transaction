@@ -1,4 +1,4 @@
-FROM openjdk:7u211-jdk-alpine3.9
+FROM openjdk:11.0-jdk-slim
 
 LABEL source="https://github.com/fiap-69aoj-hackathon/donateverse-transaction" \
       maintainer="ewertondsdias@gmail.com"
