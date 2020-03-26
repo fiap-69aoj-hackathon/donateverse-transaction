@@ -4,4 +4,4 @@ echo 'Sleeping 30s...'
 sleep 30
 
 echo 'Starting...'
-java -jar -Dspring.profiles.active=prod /user.jar
+java -jar -Dspring.profiles.active=prod /transaction.jar
